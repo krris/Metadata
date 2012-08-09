@@ -1,0 +1,62 @@
+@(metadataMap: Map[String, List[String]])(fileForm: Form[Rating])
+
+@import helper._
+
+@main(title = "Get metadata!"){
+    
+    <div class="hero-unit">
+	<h2>Place to show extracted metadata!</h2>
+	</br></br></br></br>
+
+
+	<table class="table table-bordered table-striped">
+	    <tbody>
+		@for(key <-metadataMap.keySet()){
+		    <tr>
+			<td>@key</td>
+			<td>
+			    @for(elemInList <- metadataMap.get(key)){
+				@elemInList</br>
+			    }
+			</td>
+		    </tr>
+		}
+
+	    </tbody>
+	</table>
+
+
+
+	<div class="row">
+    
+	    <div class="span6">
+
+	        @form(action = routes.MetadataController.ratingHandling()){
+	
+		    <legend>Please rate:</legend>
+		    <fieldset class="rating">
+		
+			<input type="submit" id="star5" name="ratingValue" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+			<input type="submit" id="star4" name="ratingValue" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+			<input type="submit" id="star3" name="ratingValue" value="3" /><label for="star3" title="Meh">3 stars</label>
+			<input type="submit" id="star2" name="ratingValue" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+			<input type="submit" id="star1" name="ratingValue" value="1" /><label for="star1" title="Too baaaad...">1 star</label>
+		    </fieldset>
+		}
+	    </div>
+	</div>
+    </div>
+
+    <div class="row">
+        <div class="span6">
+
+	    @form(action = routes.MetadataController.downloadXML()){
+		<input class="btn btn-success btn-large" type="submit" name="download_xml" value="Download meatadata in XML!"> 
+	    }
+
+	</div>	
+    </div> 
+
+}
+
+

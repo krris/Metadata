@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+POST	/getRawMetadata		    controllers.MetadataController.getRawMetadata()
+POST	/uploadAndProcess	    controllers.MetadataController.uploadAndProcessData()
+POST	/rating			    controllers.MetadataController.ratingHandling()
+POST	/downloadXML		    controllers.MetadataController.downloadXML()
+
+# Statistics
+GET	/statistics		    controllers.Statistics.list(p:Int ?= 0, sortBy ?= "id", order ?= "asc", f ?= "")
+
+# About
+GET	/about			    controllers.Application.about()
+
+# Contact
+GET	/contact		    controllers.Application.contact()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
