@@ -1,3 +1,9 @@
+@*************************************************
+    Shows statisctics in tables:
+    1)Files: file id, user id, filename, date of uploading, rating
+    2)Users: user id, ip, number of visits
+*************************************************@
+
 @(filePage: Page[File], fileSortBy: String, fileOrder: String, filenameFilter: String, userList: List[User])
 @main(title = "Statistics"){
 
@@ -10,7 +16,7 @@
     </div>
 
 
-
+    @*** Table of files ***@
     @if(filePage.getTotalRowCount == 0){
 	<div class="well">
 	    <em>There is no file to display</em>
@@ -25,7 +31,7 @@
 		    @fileHeader("userId", "User id")
 		    @fileHeader("filename", "Filename")
 		    @fileHeader("dateOfUploading", "Date of uploading")
-		    @fileHeader("rate", "Rate")
+		    @fileHeader("rate", "Rating")
 		</tr>
 	    </thead>
 	
@@ -96,6 +102,7 @@
         </div>
     }
 
+    @*** Table of users ***@
     @if(userList.isEmpty()){
 	<div class="well">
 	    <em>There is no file to display</em>
@@ -145,7 +152,7 @@
 }
 
 @****************************************
-* Helper generating navigation links    *
+    Helper generating navigation links    
 ****************************************@
 @fileLink(newPage:Int, newSortBy:String) = @{
     
@@ -172,7 +179,7 @@
 
 
 @**********************************
-* Helper generating table headers *
+    Helper generating table headers 
 ***********************************@
 @fileHeader(key:String, title:String) = {
     <th class="@key.replace(".","_") header @if(fileSortBy == key) @{if(fileOrder == "asc") "headerSortDown" else "headerSortUp"}">

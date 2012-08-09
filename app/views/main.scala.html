@@ -1,3 +1,10 @@
+@*******************************************
+    The main template of a website in HTML.
+    Builds a basic schema of an application.
+    Is used by every page/subpage.
+    Imports .css and .js files.
+*******************************************@
+
 @(title: String, actualWebsite: String = "")(content: Html)
 
 <!DOCTYPE html>
@@ -55,7 +62,7 @@
 </html>
 
 @footer() = {
-	<p>Stopka strony</p> 
+	<p>Beautiful footer</p> 
 	<a href ="@routes.Statistics.list(0,"filename", "asc", "")">Statistics</a>
 }
 
