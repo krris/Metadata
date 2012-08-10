@@ -25,7 +25,7 @@ public class User
 	public Long numberOfVisits;
 		
     /**
-     * Generic query helper for entity Computer with id Long
+     * Generic query helper for entity User with id Long
      */
 	public static Finder<Long, User> finder = new Finder<Long, User>(Long.class, User.class);
 	

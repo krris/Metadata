@@ -36,7 +36,7 @@ public class File
 	public int rate;
 	
     /**
-     * Generic query helper for entity Computer with id Long
+     * Generic query helper for entity File with id Long
      */
 	public static Finder<Long, File> finder = new Finder<Long, File>(Long.class, File.class);
 	

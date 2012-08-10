@@ -7,4 +7,5 @@ tmp
 dist
 .settings/
 conf/evolutions/
-
+.classpath
+.project
