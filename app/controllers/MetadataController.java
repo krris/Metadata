@@ -35,23 +35,20 @@ public class MetadataController extends Controller
 	private static String xml;
 	
 	
-	
 	private static Form<Rating> ratingForm = form(Rating.class); 
 	
 	public static Result uploadAndProcessData()
 	{
 		if(upload() == true)
 		{
-			// TODO process data
+			// TODO process data and get metadata
 			metadata = processData(uploadedFile);
 			xml = generateXML();
-//			metadata.getAllMetadataAsMap();
 		
 			// save statistics
 			Statistics.saveStatistics();
 			
 			// and show the result on website
-			/*return ok(summary.render(uploadedFileName, Statistics.getClientIp(), ratingForm));*/
 			return ok(summary.render(metadata.getAllMetadataAsMap(), ratingForm));
 		}
 		else
@@ -72,8 +69,6 @@ public class MetadataController extends Controller
 			}
 			else
 			{
-/*				uploadedFile = filePart.getFile();
-				uploadedFileName = filePart.getFilename();*/
 				uploadedFile = filePart;
 				return true;
 			}
