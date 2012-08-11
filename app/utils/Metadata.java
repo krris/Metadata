@@ -6,6 +6,12 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * Holds ectracted metadata.
+ * Every data is String. If there is more than one data of one type 
+ * it should be stored in List<String> (for example: authors). 
+ * 
+ */
 public class Metadata 
 {
 	private String filename;
@@ -23,6 +29,10 @@ public class Metadata
 		rest.add("something 2");
 	}
 	
+	/**
+	 * Return a map of metadata. It helps in displaying the extracted 
+	 * metada in a table on a website. 
+	 */
 	public Map<String, List<String>> getAllMetadataAsMap()
 	{
 		SortedMap<String, List<String>> map = new TreeMap<String, List<String>>();

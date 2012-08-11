@@ -66,6 +66,17 @@ public class Statistics extends Controller
 		return SXRequest.getRemoteAddress();
 	}
 	
+	/**
+	 * Save the raitng of a file in database.
+	 * @param rating
+	 */
+	public static void saveRatingOfFile(int rating)
+	{
+		File file = File.finder.byId(currentFileId);
+		file.rate = rating;
+		Ebean.save(file);
+	}
+	
 	private static void createNewUser(String ip)
 	{
 		User user = new User();
@@ -96,11 +107,6 @@ public class Statistics extends Controller
 		currentFileId = file.id;
 	}
 	
-	public static void saveRatingOfFile(int rating)
-	{
-		File file = File.finder.byId(currentFileId);
-		file.rate = rating;
-		Ebean.save(file);
-	}
+
 
 }

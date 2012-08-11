@@ -116,7 +116,7 @@ Aby dodać własnie pliki .css lub .js konieczne jest ich skopiowanie do odpowie
 - pliki .css do folderu /public/stylesheets
 - pliki .js do folderu /public/javascripts
 
-Następnie pliki .css dodajemy w kodzie main.scala.html w sekcji <head>, np:
+Następnie pliki .css dodajemy w kodzie main.scala.html w sekcji `head`, np:
 ``` html
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/beautiful.css")">
 ```
@@ -129,6 +129,19 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
 4) Do ułatwienia korzystania z bazy danych wykorzystany jest EBean ORM:
 * dokumentacja: http://www.avaje.org/ebean/documentation.html 
 * prosty przykład: http://www.playframework.org/documentation/2.0.2/JavaEbean
+
+
+#POBIERANIA METADANYCH W FORMACIE XML Z KONSOLI
+
+    curl -F "file=@FILE;type=application/pdf" URL/getRawMetadata > XML_FILE
+
+`FILE` - ścieżka do pliku w formacie .pdf
+`URL` - adres strony
+`XML_FILE` - ściażka do pliku, w którym będą zapisane metadane
+
+Przykładowe użycie:
+    curl -F "file=@file.pdf;type=application/pdf" http://localhost:9000/getRawMetadata > extracted_metadata.xml
+
 
 
 

@@ -34,7 +34,6 @@ public class MetadataController extends Controller
 	
 	private static String xml;
 	
-	
 	private static Form<Rating> ratingForm = form(Rating.class); 
 	
 	public static Result uploadAndProcessData()
@@ -55,6 +54,12 @@ public class MetadataController extends Controller
 			return redirect(routes.Application.index()); 
 	}
 	
+	/**
+	 * Uploads file using a form on the website.
+	 * @return true
+	 * 			false: if user wants to upload not .pdf file
+	 * 					or file does not exists
+	 */
 	private static boolean upload()
 	{
 		MultipartFormData body = request().body().asMultipartFormData();
@@ -78,14 +83,6 @@ public class MetadataController extends Controller
 			flash("error", "Missing file");
 			return false;
 		}
-	}
-	
-	private static boolean isPdfFile(FilePart filePart)
-	{
-		if(filePart.getContentType().equals("application/pdf"))
-			return true;
-		else
-			return false;
 	}
 	
 	public static String getUploadedFileName()
@@ -151,6 +148,19 @@ public class MetadataController extends Controller
 		return Integer.parseInt(rating);
 	}
 	
+	private static boolean isPdfFile(FilePart filePart)
+	{
+		if(filePart.getContentType().equals("application/pdf"))
+			return true;
+		else
+			return false;
+	}
+	
+	/**
+	 * Receives uploadedFile, process content of the file and saves it to Metadata class.
+	 * @param uploadedFile
+	 * @return Metadata
+	 */
 	private static Metadata processData(FilePart uploadedFile)
 	{
 		Metadata metadata = new Metadata();
@@ -164,21 +174,21 @@ public class MetadataController extends Controller
 	{
 		String xmlString = "";
 		
-		//Creating sample XML Document
+		// Creating sample XML Document
 		try{
 			
-			//We need a Document
+			// We need a Document
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.newDocument();
 				
 			//Creating the XML tree
 			
-			//create the root element and add it to the document
+			// create the root element and add it to the document
 			Element root = document.createElement("root");
 			document.appendChild(root);
 			
-			//create a comment and put it in the root element
+			// create a comment and put it in the root element
 			Comment comment = document.createComment("Just a thought");
 			root.appendChild(comment);
 			
@@ -186,24 +196,24 @@ public class MetadataController extends Controller
 			{				
 				for(String elemInList : metadata.getAllMetadataAsMap().get(key))
 				{
-					//create child element, add an attribute, and add to root
+					// create child element, add an attribute, and add to root
 					Element child = document.createElement(key);
 					root.appendChild(child);
-					//add a text element to the child
+					// add a text element to the child
 					Text text = document.createTextNode(elemInList);
 					child.appendChild(text);
 				}
 			}
 			
-			//Output the XML
+			// Output the XML
 			
-			//set up a transformer
+			// set up a transformer
 			TransformerFactory transfac = TransformerFactory.newInstance();
 			Transformer trans = transfac.newTransformer();
 			trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			trans.setOutputProperty(OutputKeys.INDENT, "yes");
 			
-			//create string from xml tree
+			// reate string from xml tree
 			StringWriter sw = new StringWriter();
 			StreamResult result = new StreamResult(sw);
 			DOMSource source = new DOMSource(document);
