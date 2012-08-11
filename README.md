@@ -1,7 +1,7 @@
 #INSTALACJA PLAY FRAMEWORK:
 
 
-1) Sciągnij najnowszą wersję Play'a:
+1) Ściągnij najnowszą wersję Play'a:
 http://www.playframework.org/download
 
 2) Dodaj scieżkę Play'a do PATH
@@ -72,7 +72,7 @@ Przykładowa konfiguracja może wyglądać następująco:
     db.default.user=root
     db.default.password=niesamowicie_mocne_haslo
 
-4) Uruchom terminal i przejdź do katalogu projektu i uruchom:
+4) Uruchom terminal i przejdź do katalogu projektu:
     
     $ play
     $ run
@@ -130,6 +130,8 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
 * dokumentacja: http://www.avaje.org/ebean/documentation.html 
 * prosty przykład: http://www.playframework.org/documentation/2.0.2/JavaEbean
 
+5) W razie kłopotów z bazą danych, na wszelki wypadek w drzewie projektu jest plik `database.sql`, który tworzy nową bazę danych i tabele.
+
 
 #POBIERANIA METADANYCH W FORMACIE XML Z KONSOLI
 
@@ -140,6 +142,7 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
 `XML_FILE` - ściażka do pliku, w którym będą zapisane metadane
 
 Przykładowe użycie:
+
     curl -F "file=@file.pdf;type=application/pdf" http://localhost:9000/getRawMetadata > extracted_metadata.xml
 
 
