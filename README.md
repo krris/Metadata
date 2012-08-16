@@ -59,13 +59,18 @@ http://www.playframework.org/documentation/2.0.2/Anatomy
 
 2) Stwórz nowego usera i pustą bazę danych w MySQL'u, np: "metadata_db". Możesz skorzystać jakiegokolwiek programu graficznego albo jeśli wolisz z konsoli:
 
-    * zaloguj się jako root
-    $ mysql -u root -p
-    * tworzymy nową bazę danych
-    mysql> CREATE DATABASE new_db;
-    * tworzymy usera i dajemy mu prawa do bazy danych
-    mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
-    mysql> GRANT ALL PRIVILEGES ON new_db.* TO 'user'@'localhost'WITH GRANT OPTION;
+* zaloguj się jako root
+    
+        $ mysql -u root -p
+
+* tworzymy nową bazę danych
+
+        mysql> CREATE DATABASE metadata_db;
+    
+* tworzymy usera i dajemy mu prawa do bazy danych
+
+        mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
+        mysql> GRANT ALL PRIVILEGES ON metadata_db.* TO 'user'@'localhost'WITH GRANT OPTION;
 
 
 3) Edytuj plik application.conf, który znajduje się w folderze /conf
@@ -142,13 +147,18 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
 
 2) Tworzenie nowego usera w MySQL'u i nadanie mu praw do nowo powstałej bazy danych:
 
-    * zaloguj się jako root
-    $ mysql -u root -p
-    * tworzymy nową bazę danych
-    mysql> CREATE DATABASE new_db;
-    * tworzymy usera i dajemy mu prawa do bazy danych
-    mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
-    mysql> GRANT ALL PRIVILEGES ON new_db.* TO 'user'@'localhost'WITH GRANT OPTION;
+* zaloguj się jako root
+    
+        $ mysql -u root -p
+
+* tworzymy nową bazę danych
+
+        mysql> CREATE DATABASE metadata_db;
+    
+* tworzymy usera i dajemy mu prawa do bazy danych
+
+        mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
+        mysql> GRANT ALL PRIVILEGES ON metadata_db.* TO 'user'@'localhost'WITH GRANT OPTION;
 
 3) W razie kłopotów z bazą danych, na wszelki wypadek w drzewie projektu jest plik `database.sql`, który tworzy nową bazę danych i tabele.
 
