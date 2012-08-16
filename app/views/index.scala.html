@@ -27,12 +27,13 @@
         			<span class="btn btn-large btn-primary btn-file">
 					<span class="fileupload-new">Select file</span>
 					<span class="fileupload-exists">Change</span>
-					<input type="file" name="file"/>
+					<input type="file" name="file" onchange="this.form.submit()"/>
 				</span>
                 		<span class="fileupload-preview"></span>
                 		<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">&times;</a>
-    		
-				<input class="btn btn-success btn-large"  type="submit" value="Get metadata!"> 
+    			
+			<!-- Uncomment to add submit button --!>
+			<!---	<input class="btn btn-success btn-large"  type="submit" value="Get metadata!">  --!>
    
   	  		</div>
 		</center>
