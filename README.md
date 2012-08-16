@@ -18,7 +18,7 @@ Dokumentacja odnośnie instalacji na stronie Play:
 
 #TWORZENIE I URUCHOMIENIE PIERWSZEJ APLIKACJI:
 
-1) Uruchom w terminalu poleceni:
+1) Uruchom w terminalu polecenie:
 
     $ play new firstApp
 
@@ -163,7 +163,7 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
 3) W razie kłopotów z bazą danych, na wszelki wypadek w drzewie projektu jest plik `database.sql`, który tworzy nową bazę danych i tabele.
 
 
-#POBIERANIA METADANYCH W FORMACIE XML Z KONSOLI
+#POBIERANIE METADANYCH W FORMACIE XML Z KONSOLI
 
     curl -F "file=@FILE;type=application/pdf" URL/getRawMetadata > XML_FILE
 
