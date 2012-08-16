@@ -4,7 +4,7 @@
 1) Ściągnij najnowszą wersję Play'a:
 http://www.playframework.org/download
 
-2) Dodaj scieżkę Play'a do PATH
+2) Dodaj ścieżkę Play'a do PATH
 
     export PATH=$PATH:/path/to/play
 
@@ -16,7 +16,7 @@ Dokumentacja odnośnie instalacji na stronie Play:
 [http://www.playframework.org/documentation/2.0.2/Installing](http://www.playframework.org/documentation/2.0.2/Installing)
 
 
-#TWORZENIE I URUCHOMIENIE PIERWSZEJ APLIKACJ:
+#TWORZENIE I URUCHOMIENIE PIERWSZEJ APLIKACJI:
 
 1) Uruchom w terminalu poleceni:
 
@@ -24,7 +24,7 @@ Dokumentacja odnośnie instalacji na stronie Play:
 
 I wybierz: "Create a simple Java application"
 
-2) Przejdź do foloderu z aplikacją:
+2) Przejdź do folderu z aplikacją:
 
     $ cd firstApp
 
@@ -55,9 +55,18 @@ http://www.playframework.org/documentation/2.0.2/Anatomy
 #URUCHOMIENIE APLIKACJI METADATA:
 
 1) Aby uruchomić aplikację, potrzebny jest zainstalowany MySQL.
-   Do obsługi graficznej bazy danych można zainstalować "MySql Workbench"
+   Do obsługi graficznej bazy danych można skorzystać z programy "MySql Workbench"
 
-2) Stwórz nową, pustą bazę danych w MySQL'u, np: "metadata_db"
+2) Stwórz nowego usera i pustą bazę danych w MySQL'u, np: "metadata_db". Możesz skorzystać jakiegokolwiek programu graficznego albo jeśli wolisz z konsoli:
+
+    * zaloguj się jako root
+    $ mysql -u root -p
+    * tworzymy nową bazę danych
+    mysql> CREATE DATABASE new_db;
+    * tworzymy usera i dajemy mu prawa do bazy danych
+    mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
+    mysql> GRANT ALL PRIVILEGES ON new_db.* TO 'user'@'localhost'WITH GRANT OPTION;
+
 
 3) Edytuj plik application.conf, który znajduje się w folderze /conf
    i zmień następujące linie:
@@ -82,12 +91,12 @@ Przykładowa konfiguracja może wyglądać następująco:
 
 
 
-#OGOLNE RADY PODCZAS KORZYSTANIA Z FRAMEWORK'U PLAY:
+#OGÓLNE RADY PODCZAS KORZYSTANIA Z FRAMEWORK'U PLAY:
 
 1) Dokumentacja dla osób piszących w Javie na stronie:
     http://www.playframework.org/documentation/2.0.2/JavaHome
 
-2) Najważniejsze tematy z dokumentacj, które pomogą w zrozumieniu aplikacji "metadata":
+2) Najważniejsze tematy z dokumentacji, które pomogą w zrozumieniu aplikacji "metadata":
 * Actions, Controllers and Results 
   http://www.playframework.org/documentation/2.0.2/JavaActions
 
@@ -107,12 +116,11 @@ Przykładowa konfiguracja może wyglądać następująco:
 * Form template helpers
 	http://www.playframework.org/documentation/2.0.2/JavaFormHelpers
 
-
 3) W aplikacji wykorzystany jest "Bootstrap, from Twitter", który pomaga w tworzeniu ładniejszego wyglądu strony.
     http://twitter.github.com/bootstrap/index.html
 Pliki .css i .js są już zaimportowane do projektu w pliku main.scala.html.
     
-Aby dodać własnie pliki .css lub .js konieczne jest ich skopiowanie do odpowiednio:
+Aby dodać własne pliki .css lub .js konieczne jest ich skopiowanie do odpowiednio:
 - pliki .css do folderu /public/stylesheets
 - pliki .js do folderu /public/javascripts
 
@@ -126,11 +134,23 @@ A pliki .js tak samo w main.scala.html tylko pod koniec sekcji <body>
     <script src="@routes.Assets.at("javascripts/bootstrap-fileupload.js")"></script> 
 ```
 
-4) Do ułatwienia korzystania z bazy danych wykorzystany jest EBean ORM:
+#BAZA DANYCH
+
+1) Do ułatwienia korzystania z bazy danych wykorzystany jest EBean ORM:
 * dokumentacja: http://www.avaje.org/ebean/documentation.html 
 * prosty przykład: http://www.playframework.org/documentation/2.0.2/JavaEbean
 
-5) W razie kłopotów z bazą danych, na wszelki wypadek w drzewie projektu jest plik `database.sql`, który tworzy nową bazę danych i tabele.
+2) Tworzenie nowego usera w MySQL'u i nadanie mu praw do nowo powstałej bazy danych:
+
+    * zaloguj się jako root
+    $ mysql -u root -p
+    * tworzymy nową bazę danych
+    mysql> CREATE DATABASE new_db;
+    * tworzymy usera i dajemy mu prawa do bazy danych
+    mysql> CREATE USER 'user'@'localhost' IDENTIFIED BY 'haslo';
+    mysql> GRANT ALL PRIVILEGES ON new_db.* TO 'user'@'localhost'WITH GRANT OPTION;
+
+3) W razie kłopotów z bazą danych, na wszelki wypadek w drzewie projektu jest plik `database.sql`, który tworzy nową bazę danych i tabele.
 
 
 #POBIERANIA METADANYCH W FORMACIE XML Z KONSOLI
@@ -203,7 +223,7 @@ Skopiuj pokazany "git url". Zapamiętaj również podany adres url strony.
     $ rhc app cartridge add -a metadata -c mysql-5.1
     $ rhc app cartridge add -a metadata -c phpmyadmin-3.4
 
-8) Edytuj plik `/conf/openshift.conf` i odkomentuj nastęþujące linie:
+8) Edytuj plik `/conf/openshift.conf` i odkomentuj następujące linie:
 
     # openshift mysql database
     db.default.driver=com.mysql.jdbc.Driver
